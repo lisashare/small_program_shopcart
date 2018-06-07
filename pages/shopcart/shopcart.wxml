@@ -29,9 +29,13 @@
                 <view class="info-count">
                     <!-- 增加减少按钮 -->
                     <view class="calculate">
-                        <text class="minus">-</text>
+                        <text class ="{{ 'minus' + (item.count === 1 ?' active':'') }}"
+                         bindtap="minusCount"
+                         data-index = "{{index}}">-</text>
+
                         <input type="number" class="number" value="{{ item.count }}"></input>
-                        <text class="plus">+</text>
+
+                        <text class="plus" bindtap="addCount" data-index = "{{index}}">+</text>
                     </view>
                     <!-- 删除按钮 -->
                     <text class="delete" bindtap="deleteList" data-index="{{ index }}">x</text>

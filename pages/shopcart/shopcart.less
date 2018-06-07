@@ -4,7 +4,7 @@
     width:50rpx;
     height:50rpx;
     margin-left: 20rpx;
-    margin-right: 14rpx;
+    margin-right: rpx;
 }
 .cart-container{
     display: flex;
@@ -45,13 +45,20 @@
     .info-count{
         display: flex;
         justify-content: space-between;
-        padding:0 16rpx;
+        padding:0 16rpx 0 0;
         .calculate{
             display: flex;
              .number{
                 text-align: center;
-                width:100rpx;
+                width:60rpx;
             } 
+            .plus,.minus{
+                width:80rpx;
+                text-align: center;
+            }  
+            .active{
+                background:#f2f2f2;
+            }
         }
     }
 }

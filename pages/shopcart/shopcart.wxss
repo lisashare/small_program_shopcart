@@ -3,7 +3,7 @@
   width: 50rpx;
   height: 50rpx;
   margin-left: 20rpx;
-  margin-right: 14rpx;
+  margin-right: rpx;
 }
 .cart-container {
   display: flex;
@@ -44,14 +44,22 @@
 .info-box .info-count {
   display: flex;
   justify-content: space-between;
-  padding: 0 16rpx;
+  padding: 0 16rpx 0 0;
 }
 .info-box .info-count .calculate {
   display: flex;
 }
 .info-box .info-count .calculate .number {
   text-align: center;
-  width: 100rpx;
+  width: 60rpx;
+}
+.info-box .info-count .calculate .plus,
+.info-box .info-count .calculate .minus {
+  width: 80rpx;
+  text-align: center;
+}
+.info-box .info-count .calculate .active {
+  background: #f2f2f2;
 }
 .bottom-total {
   position: fixed;

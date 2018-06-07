@@ -81,5 +81,35 @@ Page({
     })
 
     this.getTotalPrice()  //重新获取总价
-  }
+  },
+//增减数量：点击+号，count加1，点击-号，如果count>1,则减1
+  addCount(e) {
+    const index = e.currentTarget.dataset.index;
+    let carts = this.data.carts;
+    let count = carts[index].count;
+    count = count + 1;
+    carts[index].count = count;
+    this.setData({
+      carts:carts
+    })
+    this.getTotalPrice()  //重新获取总价
+  },
+  minusCount(e) {
+    const index = e.currentTarget.dataset.index;
+    let carts = this.data.carts;
+    let count = carts[index].count;
+    count = count - 1;
+    if(count < 1){
+      return false;
+    }
+    carts[index].count = count;
+    this.setData({
+      carts:carts
+    })
+
+    this.getTotalPrice();
+  },
+  //删除商品：点击删除按钮则从购物车类表中删除当前元素，删除只有如果购物车为空，改变购物车为空标识hasList为false
+
+  
 })
