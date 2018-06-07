@@ -110,6 +110,20 @@ Page({
     this.getTotalPrice();
   },
   //删除商品：点击删除按钮则从购物车类表中删除当前元素，删除只有如果购物车为空，改变购物车为空标识hasList为false
+  deleteList(e) {
+    const index = e.currentTarget.dataset.index;
+    let carts = this.data.carts;
+    carts.splice(index,1);  //删除购物车列表里这个商品
+    this.setData({
+      carts:carts
+    })
 
-  
+    if(!carts.length){   //如果购物车为空
+      this.setData({
+        hasList:false    // 修改标识为false，显示购物车为空页面
+      });
+    }else{
+      this.getTotalPrice();  //如果不为空，重新计算总价格
+    }
+  }
 })
