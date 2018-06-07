@@ -1,2 +1,63 @@
 <!--pages/shopcart/shopcart.wxml-->
-<text>pages/shopcart/shopcart.wxml</text>
+<view class="page cart">
+
+    <view wx:if = "{{ hasList }}" class="cart-box">
+    <scroll-view scroll-y="{{true}}">
+        <view class="cart-container" wx:for = "{{ carts }}" wx:key = "item.id">
+
+            <image 
+                bindtap="selectList" 
+                data-index="{{index}}" 
+                class="item-select" src="{{ item.isSelect ?'../../images/cart/comment_select.png':'../../images/cart/comment_normal.png'}}"></image>
+
+            <!-- 点击商品图片可跳转到商品详情 -->
+            <!-- navigator url=""> -->
+                <image class="item-image" src="{{item.pic}}"/>
+            <!-- </navigator> -->
+            
+            <view class="info-box">
+                <view class="info">
+                    <text class="title">{{ item.name }}</text>
+
+                    <view class="row">
+                        <text class="price">￥</text>
+                        <text class="price">{{ item.price }}</text>
+                    </view>
+                    
+                </view>
+                <!-- 计算数量 -->
+                <view class="info-count">
+                    <!-- 增加减少按钮 -->
+                    <view class="calculate">
+                        <text class="minus">-</text>
+                        <input type="number" class="number" value="{{ item.count }}"></input>
+                        <text class="plus">+</text>
+                    </view>
+                    <!-- 删除按钮 -->
+                    <text class="delete" bindtap="deleteList" data-index="{{ index }}">x</text>
+                    
+                </view>
+                
+            </view>
+            <view class="line"></view>
+        </view>
+
+        </scroll-view>
+        <!-- 底部操作栏 -->
+        <view class="bottom-total">
+            <image class="item-select"  bindtap="selectAll" src="{{ selectAllStatus ?'../../images/cart/comment_select.png':'../../images/cart/comment_normal.png'}}" />
+            <!-- 全选按钮 -->
+            <text class="all-select">全选</text>
+            <text class="total-price">￥{{ totalPrice }}</text>
+            <!-- 去结算 -->
+            <button class="button-red" bindtap="toBuy" formType="submit">去结算</button>
+        </view>
+
+    </view>
+
+    <view class="cart-empty" wx:else>
+        <image src="../../images/cart/non_cart.png" class="cart-image"/>
+        <text>购物车是空的哦！</text>
+    </view>
+
+</view>
